@@ -998,30 +998,33 @@ elif tab_choice == " Kesimpulan & Rekomendasi":
         </div>
         """, unsafe_allow_html=True)
 
-    st.markdown('<div class="section-title"> Rekomendasi Kebijakan</div>', unsafe_allow_html=True)
+st.markdown('<div class="section-title"> Rekomendasi Kebijakan</div>', unsafe_allow_html=True)
 
-    rekomendasi = [
-        (" Kebijakan Pengendalian Tembakau",
-         ["Perkuat Kawasan Tanpa Rokok (KTR) di area domestik/perumahan",
-          "Kampanye bagi pasangan muda (usia 25–34) tentang dampak rokok pada pertumbuhan anak",
-          "Integrasikan konseling berhenti merokok ke dalam program KIA (Kesehatan Ibu & Anak)"],
-         "#ef4444"),
-        (" Peningkatan Kualitas Air Minum",
-         ["Tidak cukup hanya meningkatkan cakupan audit kualitas air berkala di tingkat rumah tangga",
-          "Sosialisasi pengolahan air minum yang higienis kepada ibu rumah tangga",
-          "Sinkronisasi data PDAM dengan data kesehatan untuk monitoring terintegrasi"],
-         "#3b82f6"),
-        (" Penguatan Program KB",
-         ["Tingkatkan aksesibilitas dan ketersediaan layanan KB di daerah terpencil",
-          "Kampanye jarak kelahiran ideal (≥ 2 tahun) sebagai bagian edukasi pranikah",
-          "Integrasi KB dengan program gizi ibu dan 1000 HPK (Hari Pertama Kehidupan)"],
-         "#22c55e"),
-        (" Pendekatan Spasial-Terpadu",
-         ["Bentuk kluster intervensi berdasarkan peta spasial stunting — wilayah tinggi diprioritaskan",
-          "Alokasikan tenaga gizi secara proporsional ke kluster-kluster berisiko tinggi",
-          "Koordinasi lintas batas administrasi untuk menangani spillover efek spasial"],
-         "#8b5cf6"),
-    ]
+rekomendasi = [
+    (" Intervensi Berbasis Klaster Wilayah (Aglomerasi)",
+     ["Bentuk Satgas Lintas Kabupaten/Kota untuk wilayah berbatasan yang memiliki agregasi stunting tinggi",
+      "Sinkronkan kebijakan kesehatan, infrastruktur, dan edukasi gizi dengan kabupaten tetangga",
+      "Manfaatkan spillover effect (efek rambatan) positif melintasi batas administratif"],
+     "#8b5cf6"), # Warna Ungu
+     
+    (" Transformasi Metrik Sanitasi & Air Bersih",
+     ["Lakukan audit kualitas air (uji E. coli dan logam berat) secara berkala, bukan sekadar data ketersediaan akses",
+      "Awasi ketat pembangunan sanitasi agar sesuai standar SNI tangki septik",
+      "Cegah kontaminasi air tanah yang dapat memicu diare kronis pada balita"],
+     "#3b82f6"), # Warna Biru
+     
+    (" Penguatan Regulasi Kawasan Tanpa Rokok (KTR)",
+     ["Ubah narasi edukasi keluarga muda secara masif menjadi: 'Asap Rokok Menghambat Gizi Anak'",
+      "Alokasikan Dana Desa untuk program insentif bagi keluarga bebas asap rokok",
+      "Perketat implementasi Peraturan Daerah KTR hingga ke tingkat Rukun Warga (RW)"],
+     "#ef4444"), # Warna Merah
+     
+    (" Integrasi Data KB & Penanganan Stunting",
+     ["Perkuat kolaborasi erat antara BKKBN dan Posyandu di tingkat masyarakat",
+      "Jadikan aplikasi pendataan keluarga (seperti Elsimil) sebagai syarat pendampingan pranikah dan pascasalin",
+      "Pastikan jarak antar-kehamilan minimal 2–3 tahun untuk menjamin kecukupan nutrisi optimal ibu dan balita"],
+     "#22c55e"), # Warna Hijau
+]
 
     for title, items, color in rekomendasi:
         with st.expander(f"{title}", expanded=False):
