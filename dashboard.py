@@ -993,7 +993,7 @@ elif tab_choice == " Kesimpulan & Rekomendasi":
     for title, desc in kesimpulan:
         st.markdown(f"""
         <div class="kpi-card" style="border-color:#2563eb; margin-bottom:14px">
-            <div style="font-size:1rem; font-weight:700; color:#1e293b">{icon} {title}</div>
+            <div style="font-size:1rem; font-weight:700; color:#1e293b">{title}</div>
             <div style="font-size:0.84rem; color:#374151; margin-top:6px">{desc}</div>
         </div>
         """, unsafe_allow_html=True)
