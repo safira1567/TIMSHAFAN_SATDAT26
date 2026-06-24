@@ -372,10 +372,6 @@ with st.sidebar:
          " Kesimpulan & Rekomendasi"],
         label_visibility="collapsed"
     )
-
-    st.markdown("---")
-    tahun_filter = st.multiselect("Tahun", sorted(df["Tahun"].unique()), default=sorted(df["Tahun"].unique()))
-    kab_filter   = st.multiselect("Kabupaten/Kota (opsional)", sorted(df["Kabupaten_Kota"].unique()))
     st.markdown("---")
     st.markdown("""
     <div style='font-size:0.75rem;color:#94a3b8;line-height:1.6'>
@@ -388,10 +384,7 @@ with st.sidebar:
     </div>
     """, unsafe_allow_html=True)
 
-# Filter data
-df_f = df[df["Tahun"].isin(tahun_filter)]
-if kab_filter:
-    df_f = df_f[df_f["Kabupaten_Kota"].isin(kab_filter)]
+df_f = df.copy()
 
 # ═══════════════════════════════════════════════════════════════════════════════
 # HELPER: color by stunting level
@@ -493,7 +486,7 @@ if tab_choice == " Beranda":
 
     st.markdown("""
     <div class="info-box">
-    ℹ️ <b>Sumber Data:</b>
+     <b>Sumber Data:</b>
     (1) Prevalensi Stunting — Survei Status Gizi Indonesia (SSGI) Kemenkes RI, 2020–2024;
     (2) Variabel independen — Provinsi Jawa Tengah dalam Angka, Badan Pusat Statistik, 2020–2024.
     Data mencakup 35 kabupaten/kota di Provinsi Jawa Tengah.
@@ -508,12 +501,12 @@ elif tab_choice == " Analisis Deskriptif":
     st.markdown('<p class="section-subtitle">Gambaran umum distribusi semua variabel penelitian.</p>', unsafe_allow_html=True)
 
     var_map = {
-        "Stunting": "Prevalensi Stunting (Y) — %",
-        "Perokok":  "Perokok Usia 25–34 (X1) — %",
-        "Air_Minum":"Air Minum Layak (X2) — %",
-        "Tenaga_Gizi":"Tenaga Gizi (X3) — orang",
-        "BAB_Sendiri":"Fasilitas BAB Sendiri (X4) — %",
-        "KB_Aktif": "KB Aktif (X5) — %"
+        "Stunting": "Prevalensi Stunting (Y) %",
+        "Perokok":  "Perokok Usia 25–34 (X1) %",
+        "Air_Minum":"Air Minum Layak (X2) %",
+        "Tenaga_Gizi":"Tenaga Gizi (X3) orang",
+        "BAB_Sendiri":"Fasilitas BAB Sendiri (X4) %",
+        "KB_Aktif": "KB Aktif (X5) %"
     }
 
     desc_rows = []
@@ -776,8 +769,8 @@ elif tab_choice == " Pemilihan Model":
 # ═══════════════════════════════════════════════════════════════════════════════
 # PAGE 4 — SPASIAL PANEL SAR-FE
 # ═══════════════════════════════════════════════════════════════════════════════
-elif tab_choice == "🗺️ Spasial Panel (SAR-FE)":
-    st.markdown('<div class="section-title">🗺️ Hasil Estimasi Model SAR-FE</div>', unsafe_allow_html=True)
+elif tab_choice == " Spasial Panel (SAR-FE)":
+    st.markdown('<div class="section-title"> Hasil Estimasi Model SAR-FE</div>', unsafe_allow_html=True)
     st.markdown('<p class="section-subtitle">Spatial Autoregressive Fixed Effect — Model terbaik dengan AIC = 892,64 dan R² = 0,7512</p>', unsafe_allow_html=True)
 
     # Equation
@@ -826,16 +819,16 @@ elif tab_choice == "🗺️ Spasial Panel (SAR-FE)":
     st.plotly_chart(fig_coef, use_container_width=True)
 
     # Interpretation
-    st.markdown('<div class="section-title">🔍 Interpretasi Koefisien</div>', unsafe_allow_html=True)
+    st.markdown('<div class="section-title"> Interpretasi Koefisien</div>', unsafe_allow_html=True)
 
     cards = [
-        ("🔗 λ = 0,874 (Spasial Lag)", "Signifikan pada α=5%",
+        (" λ = 0,874 (Spasial Lag)", "Signifikan pada α=5%",
          "Terdapat ketergantungan spasial yang kuat. Prevalensi stunting di suatu kabupaten/kota dipengaruhi oleh wilayah-wilayah tetangganya. Kluster wilayah dengan stunting tinggi cenderung mengelompok secara geografis.", "#2563eb"),
-        ("🚬 β₁ = +1,893 (Perokok)", "Signifikan pada α=5%",
+        (" β₁ = +1,893 (Perokok)", "Signifikan pada α=5%",
          "Setiap kenaikan 1% persentase perokok usia 25–34, prevalensi stunting meningkat 1,893%. Paparan asap rokok dalam keluarga berpengaruh langsung pada pertumbuhan anak melalui gangguan penyerapan nutrisi.", "#ef4444"),
-        ("💧 β₂ = +1,261 (Air Minum)", "Signifikan pada α=5%",
+        (" β₂ = +1,261 (Air Minum)", "Signifikan pada α=5%",
          "Paradoks positif: cakupan air minum layak yang tinggi belum tentu menjamin kualitas air bersih. Infrastruktur tersedia, namun kualitas biologis dan sanitasi pengelolaan belum tentu memadai.", "#f59e0b"),
-        ("💊 β₅ = −0,494 (KB Aktif)", "Signifikan pada α=5%",
+        (" β₅ = −0,494 (KB Aktif)", "Signifikan pada α=5%",
          "Setiap kenaikan 1% peserta KB aktif, stunting turun 0,494%. KB efektif mengatur jarak kelahiran, memberi waktu pemulihan gizi ibu, dan meningkatkan kualitas pengasuhan per anak.", "#22c55e"),
     ]
 
@@ -853,14 +846,14 @@ elif tab_choice == "🗺️ Spasial Panel (SAR-FE)":
 
     st.markdown("""
     <div class="warn-box">
-    ⚠️ Variabel X3 (Tenaga Gizi) dan X4 (BAB Sendiri) tidak signifikan secara statistik pada α=5%.
+     Variabel X3 (Tenaga Gizi) dan X4 (BAB Sendiri) tidak signifikan secara statistik pada α=5%.
     Hal ini kemungkinan diakibatkan oleh korelasi antarwilayah yang tertangkap oleh komponen spasial lag (λ),
     sehingga efek langsung kedua variabel tersebut menjadi tidak terdeteksi secara parsial.
     </div>
     """, unsafe_allow_html=True)
 
     # Model performance
-    st.markdown('<div class="section-title">📊 Performa Model</div>', unsafe_allow_html=True)
+    st.markdown('<div class="section-title"> Performa Model</div>', unsafe_allow_html=True)
     perf_cols = st.columns(3)
     with perf_cols[0]:
         st.metric("R²", "0,7512", help="Model menjelaskan 75,12% variabilitas stunting")
@@ -870,7 +863,7 @@ elif tab_choice == "🗺️ Spasial Panel (SAR-FE)":
         st.metric("LR Statistik", "226,37", help="Uji Likelihood Ratio — signifikan (p < 0,001)")
 
     # Fitted vs actual simulation
-    st.markdown('<div class="section-title">📉 Nilai Fitted vs Observasi (Simulasi)</div>', unsafe_allow_html=True)
+    st.markdown('<div class="section-title"> Nilai Fitted vs Observasi (Simulasi)</div>', unsafe_allow_html=True)
     np.random.seed(42)
     sample = df_f.sample(min(80, len(df_f))).copy()
     sample["Fitted"] = (0.874209 * sample["Stunting"].shift(1).fillna(sample["Stunting"].mean()) +
@@ -894,8 +887,8 @@ elif tab_choice == "🗺️ Spasial Panel (SAR-FE)":
 # ═══════════════════════════════════════════════════════════════════════════════
 # PAGE 5 — VALIDASI ASUMSI MODEL SAR-FE
 # ═══════════════════════════════════════════════════════════════════════════════
-elif tab_choice == "✅ Validasi Asumsi":
-    st.markdown('<div class="section-title">✅ Validasi Asumsi Model SAR-FE</div>', unsafe_allow_html=True)
+elif tab_choice == " Validasi Asumsi":
+    st.markdown('<div class="section-title"> Validasi Asumsi Model SAR-FE</div>', unsafe_allow_html=True)
     st.markdown('<p class="section-subtitle">Pemeriksaan normalitas residual dan homoskedastisitas untuk memastikan reliabilitas model.</p>', unsafe_allow_html=True)
 
     # Simulate residuals
@@ -913,7 +906,7 @@ elif tab_choice == "✅ Validasi Asumsi":
 
     norm_df = pd.DataFrame({
         "Statistik": ["D-Statistik","P-Value","Keputusan","Interpretasi"],
-        "Nilai":     ["0,0414","0,9249","Gagal Tolak H₀","✅ Residual berdistribusi normal"]
+        "Nilai":     ["0,0414","0,9249","Gagal Tolak H₀"," Residual berdistribusi normal"]
     })
     st.dataframe(norm_df, use_container_width=True, hide_index=True)
 
@@ -955,7 +948,7 @@ elif tab_choice == "✅ Validasi Asumsi":
         "Variabel": ["X1 (Perokok)","X2 (Air Minum)","X3 (Tenaga Gizi)","X4 (BAB Sendiri)","X5 (KB Aktif)"],
         "P-Value":  [0.5341, 0.1754, 0.5185, 0.92, 0.3539],
         "Keputusan":["Gagal Tolak H₀"]*5,
-        "Status":   ["✅ Homogen"]*5
+        "Status":   [" Homogen"]*5
     })
     st.dataframe(glejser_df, use_container_width=True, hide_index=True)
 
@@ -969,13 +962,13 @@ elif tab_choice == "✅ Validasi Asumsi":
         title_text="Seluruh P-Value di Atas 0,05 → Tidak Ada Heteroskedastisitas")
     st.plotly_chart(fig_glejser, use_container_width=True)
 
-    st.markdown('<div class="success-box">✅ Model SAR-FE memenuhi seluruh uji asumsi: residual berdistribusi normal dan variansi homogen. Model layak digunakan untuk inferensi statistik.</div>', unsafe_allow_html=True)
+    st.markdown('<div class="success-box"> Model SAR-FE memenuhi seluruh uji asumsi: residual berdistribusi normal dan variansi homogen. Model layak digunakan untuk inferensi statistik.</div>', unsafe_allow_html=True)
 
     # LR Test
     st.markdown('<div class="section-title">③ Uji Signifikansi Model — Likelihood Ratio Test</div>', unsafe_allow_html=True)
     lr_df = pd.DataFrame({
         "Statistik": ["LR Statistik","P-Value","Keputusan","Interpretasi"],
-        "Nilai":     ["226,3652","0,0000","Tolak H₀","✅ Model SAR-FE signifikan secara keseluruhan"]
+        "Nilai":     ["226,3652","0,0000","Tolak H₀"," Model SAR-FE signifikan secara keseluruhan"]
     })
     st.dataframe(lr_df, use_container_width=True, hide_index=True)
 
@@ -983,18 +976,18 @@ elif tab_choice == "✅ Validasi Asumsi":
 # PAGE 6 — KESIMPULAN & REKOMENDASI
 # ═══════════════════════════════════════════════════════════════════════════════
 elif tab_choice == "📋 Kesimpulan & Rekomendasi":
-    st.markdown('<div class="section-title">📋 Kesimpulan Analisis</div>', unsafe_allow_html=True)
+    st.markdown('<div class="section-title"> Kesimpulan Analisis</div>', unsafe_allow_html=True)
 
     kesimpulan = [
-        ("🏆", "Model Terbaik: SAR-FE",
+        ( "Model Terbaik: SAR-FE",
          "Berdasarkan serangkaian uji (Chow, Hausman, LM, dan AIC), model Spatial Autoregressive Fixed Effect (SAR-FE) terpilih sebagai model terbaik dengan AIC = 892,64 dan R² = 0,75, mengungguli CEM, REM, dan SEM-FE."),
-        ("🔗", "Ketergantungan Spasial Signifikan (λ = 0,874)",
+        ( "Ketergantungan Spasial Signifikan (λ = 0,874)",
          "Prevalensi stunting di Jawa Tengah menunjukkan kluster spasial yang kuat. Wilayah dengan stunting tinggi cenderung dikelilingi oleh wilayah stunting tinggi pula, mengindikasikan perlunya intervensi berbasis wilayah yang terintegrasi."),
-        ("🚬", "Rokok: Faktor Risiko Utama (β₁ = +1,893)",
+        ( "Rokok: Faktor Risiko Utama (β₁ = +1,893)",
          "Setiap kenaikan 1% persentase perokok usia 25–34, prevalensi stunting naik 1,893%. Paparan asap rokok dalam lingkungan keluarga terbukti secara statistik meningkatkan risiko stunting pada anak."),
-        ("💧", "Paradoks Air Minum (β₂ = +1,261)",
+        ( "Paradoks Air Minum (β₂ = +1,261)",
          "Peningkatan akses air minum layak justru menunjukkan korelasi positif dengan stunting — mengindikasikan bahwa kuantitas cakupan air belum menjamin kualitas dan higienitas pengelolaan air di tingkat rumah tangga."),
-        ("💊", "KB Aktif: Protektif (β₅ = −0,494)",
+        ( "KB Aktif: Protektif (β₅ = −0,494)",
          "Program KB aktif terbukti efektif menurunkan prevalensi stunting. Setiap 1% peningkatan KB aktif, stunting turun 0,494% — karena KB memungkinkan jarak kelahiran yang optimal dan pemulihan gizi ibu pascapersalinan."),
     ]
     for icon, title, desc in kesimpulan:
@@ -1005,25 +998,25 @@ elif tab_choice == "📋 Kesimpulan & Rekomendasi":
         </div>
         """, unsafe_allow_html=True)
 
-    st.markdown('<div class="section-title">🎯 Rekomendasi Kebijakan</div>', unsafe_allow_html=True)
+    st.markdown('<div class="section-title"> Rekomendasi Kebijakan</div>', unsafe_allow_html=True)
 
     rekomendasi = [
-        ("🚬 Kebijakan Pengendalian Tembakau",
+        (" Kebijakan Pengendalian Tembakau",
          ["Perkuat Kawasan Tanpa Rokok (KTR) di area domestik/perumahan",
           "Kampanye bagi pasangan muda (usia 25–34) tentang dampak rokok pada pertumbuhan anak",
           "Integrasikan konseling berhenti merokok ke dalam program KIA (Kesehatan Ibu & Anak)"],
          "#ef4444"),
-        ("💧 Peningkatan Kualitas Air Minum",
+        (" Peningkatan Kualitas Air Minum",
          ["Tidak cukup hanya meningkatkan cakupan — audit kualitas air berkala di tingkat rumah tangga",
           "Sosialisasi pengolahan air minum yang higienis kepada ibu rumah tangga",
           "Sinkronisasi data PDAM dengan data kesehatan untuk monitoring terintegrasi"],
          "#3b82f6"),
-        ("💊 Penguatan Program KB",
+        (" Penguatan Program KB",
          ["Tingkatkan aksesibilitas dan ketersediaan layanan KB di daerah terpencil",
           "Kampanye jarak kelahiran ideal (≥ 2 tahun) sebagai bagian edukasi pranikah",
           "Integrasi KB dengan program gizi ibu dan 1000 HPK (Hari Pertama Kehidupan)"],
          "#22c55e"),
-        ("🗺️ Pendekatan Spasial-Terpadu",
+        (" Pendekatan Spasial-Terpadu",
          ["Bentuk kluster intervensi berdasarkan peta spasial stunting — wilayah tinggi diprioritaskan",
           "Alokasikan tenaga gizi secara proporsional ke kluster-kluster berisiko tinggi",
           "Koordinasi lintas batas administrasi untuk menangani spillover efek spasial"],
@@ -1036,15 +1029,15 @@ elif tab_choice == "📋 Kesimpulan & Rekomendasi":
                 st.markdown(f"• {item}")
 
     # Saran penelitian lanjutan
-    st.markdown('<div class="section-title">🔭 Saran untuk Penelitian Lanjutan</div>', unsafe_allow_html=True)
+    st.markdown('<div class="section-title"> Saran untuk Penelitian Lanjutan</div>', unsafe_allow_html=True)
     saran = [
-        ("📍 Matriks Bobot Spasial Alternatif",
+        (" Matriks Bobot Spasial Alternatif",
          "Eksplorasi bobot spasial berbasis jarak Euclidean atau invers jarak, tidak hanya Queen/Rook contiguity, untuk menguji sensitivitas hasil terhadap spesifikasi spasial."),
-        ("⏳ Model Dinamis Panel Spasial",
+        (" Model Dinamis Panel Spasial",
          "Pertimbangkan penambahan lag temporal stunting sebagai prediktor (dynamic spatial panel) untuk menangkap persistensi efek stunting antarwaktu."),
-        ("🧩 Variabel Mediasi",
+        (" Variabel Mediasi",
          "Tambahkan variabel mediasi seperti BBLR (Berat Bayi Lahir Rendah), ASI eksklusif, dan kemiskinan ekstrem untuk memperkaya kausalitas model."),
-        ("🔬 Analisis Sub-Kelompok",
+        (" Analisis Sub-Kelompok",
          "Lakukan analisis terpisah per wilayah (pantai utara vs selatan Jawa Tengah) untuk mendeteksi heterogenitas pola spasial yang tersembunyi dalam model agregat."),
     ]
     c1, c2 = st.columns(2)
@@ -1058,11 +1051,11 @@ elif tab_choice == "📋 Kesimpulan & Rekomendasi":
             """, unsafe_allow_html=True)
 
     # Data table
-    st.markdown('<div class="section-title">📋 Data Lengkap</div>', unsafe_allow_html=True)
+    st.markdown('<div class="section-title"> Data Lengkap</div>', unsafe_allow_html=True)
     st.dataframe(df_f.rename(columns={
         "Kabupaten_Kota":"Kab/Kota","Stunting":"Stunting (%)","Perokok":"Perokok (%)","Air_Minum":"Air Minum (%)","Tenaga_Gizi":"Tenaga Gizi","BAB_Sendiri":"BAB Sendiri (%)","KB_Aktif":"KB Aktif (%)"
     }), use_container_width=True, height=350)
-    st.download_button("⬇️ Unduh Data CSV", df.to_csv(index=False).encode('utf-8'),
+    st.download_button(" Unduh Data CSV", df.to_csv(index=False).encode('utf-8'),
         file_name="data_stunting_jateng.csv", mime="text/csv")
 
 # Footer
