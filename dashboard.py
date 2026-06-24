@@ -965,7 +965,7 @@ elif tab_choice == " Validasi Asumsi":
     st.markdown('<div class="success-box"> Model SAR-FE memenuhi seluruh uji asumsi: residual berdistribusi normal dan variansi homogen. Model layak digunakan untuk inferensi statistik.</div>', unsafe_allow_html=True)
 
     # LR Test
-    st.markdown('<div class="section-title">③ Uji Signifikansi Model — Likelihood Ratio Test</div>', unsafe_allow_html=True)
+    st.markdown('<div class="section-title">③ Uji Signifikansi Model Likelihood Ratio Test</div>', unsafe_allow_html=True)
     lr_df = pd.DataFrame({
         "Statistik": ["LR Statistik","P-Value","Keputusan","Interpretasi"],
         "Nilai":     ["226,3652","0,0000","Tolak H₀"," Model SAR-FE signifikan secara keseluruhan"]
@@ -975,7 +975,7 @@ elif tab_choice == " Validasi Asumsi":
 # ═══════════════════════════════════════════════════════════════════════════════
 # PAGE 6 — KESIMPULAN & REKOMENDASI
 # ═══════════════════════════════════════════════════════════════════════════════
-elif tab_choice == "📋 Kesimpulan & Rekomendasi":
+elif tab_choice == " Kesimpulan & Rekomendasi":
     st.markdown('<div class="section-title"> Kesimpulan Analisis</div>', unsafe_allow_html=True)
 
     kesimpulan = [
@@ -986,9 +986,9 @@ elif tab_choice == "📋 Kesimpulan & Rekomendasi":
         ( "Rokok: Faktor Risiko Utama (β₁ = +1,893)",
          "Setiap kenaikan 1% persentase perokok usia 25–34, prevalensi stunting naik 1,893%. Paparan asap rokok dalam lingkungan keluarga terbukti secara statistik meningkatkan risiko stunting pada anak."),
         ( "Paradoks Air Minum (β₂ = +1,261)",
-         "Peningkatan akses air minum layak justru menunjukkan korelasi positif dengan stunting — mengindikasikan bahwa kuantitas cakupan air belum menjamin kualitas dan higienitas pengelolaan air di tingkat rumah tangga."),
+         "Peningkatan akses air minum layak justru menunjukkan korelasi positif dengan stunting mengindikasikan bahwa kuantitas cakupan air belum menjamin kualitas dan higienitas pengelolaan air di tingkat rumah tangga."),
         ( "KB Aktif: Protektif (β₅ = −0,494)",
-         "Program KB aktif terbukti efektif menurunkan prevalensi stunting. Setiap 1% peningkatan KB aktif, stunting turun 0,494% — karena KB memungkinkan jarak kelahiran yang optimal dan pemulihan gizi ibu pascapersalinan."),
+         "Program KB aktif terbukti efektif menurunkan prevalensi stunting. Setiap 1% peningkatan KB aktif, stunting turun 0,494% karena KB memungkinkan jarak kelahiran yang optimal dan pemulihan gizi ibu pascapersalinan."),
     ]
     for icon, title, desc in kesimpulan:
         st.markdown(f"""
