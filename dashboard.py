@@ -1007,7 +1007,7 @@ elif tab_choice == " Kesimpulan & Rekomendasi":
           "Integrasikan konseling berhenti merokok ke dalam program KIA (Kesehatan Ibu & Anak)"],
          "#ef4444"),
         (" Peningkatan Kualitas Air Minum",
-         ["Tidak cukup hanya meningkatkan cakupan — audit kualitas air berkala di tingkat rumah tangga",
+         ["Tidak cukup hanya meningkatkan cakupan audit kualitas air berkala di tingkat rumah tangga",
           "Sosialisasi pengolahan air minum yang higienis kepada ibu rumah tangga",
           "Sinkronisasi data PDAM dengan data kesehatan untuk monitoring terintegrasi"],
          "#3b82f6"),
