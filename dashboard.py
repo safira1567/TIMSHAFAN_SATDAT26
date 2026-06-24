@@ -1027,9 +1027,9 @@ rekomendasi = [
 ]
 
     for title, items, color in rekomendasi:
-        with st.expander(f"{title}", expanded=False):
-            for item in items:
-                st.markdown(f"• {item}")
+    with st.expander(title, expanded=False):
+        for item in items:
+            st.markdown(f"• {item}")
 
     # Saran penelitian lanjutan
     st.markdown('<div class="section-title"> Saran untuk Penelitian Lanjutan</div>', unsafe_allow_html=True)
