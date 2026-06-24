@@ -990,7 +990,7 @@ elif tab_choice == " Kesimpulan & Rekomendasi":
         ( "KB Aktif: Protektif (β₅ = −0,494)",
          "Program KB aktif terbukti efektif menurunkan prevalensi stunting. Setiap 1% peningkatan KB aktif, stunting turun 0,494% karena KB memungkinkan jarak kelahiran yang optimal dan pemulihan gizi ibu pascapersalinan."),
     ]
-    for icon, title, desc in kesimpulan:
+    for title, desc in kesimpulan:
         st.markdown(f"""
         <div class="kpi-card" style="border-color:#2563eb; margin-bottom:14px">
             <div style="font-size:1rem; font-weight:700; color:#1e293b">{icon} {title}</div>
