@@ -1005,7 +1005,7 @@ elif tab_choice == " Kesimpulan & Rekomendasi":
      ["Bentuk Satgas Lintas Kabupaten/Kota untuk wilayah berbatasan yang memiliki agregasi stunting tinggi",
       "Sinkronkan kebijakan kesehatan, infrastruktur, dan edukasi gizi dengan kabupaten tetangga",
       "Manfaatkan spillover effect (efek rambatan) positif melintasi batas administratif"],
-     "violet"),  
+     "#ef4444"), 
      
     (" Transformasi Metrik Sanitasi & Air Bersih",
      ["Lakukan audit kualitas air (uji E. coli dan logam berat) secara berkala, bukan sekadar data ketersediaan akses",
