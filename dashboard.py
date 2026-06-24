@@ -997,10 +997,10 @@ elif tab_choice == " Kesimpulan & Rekomendasi":
             <div style="font-size:0.84rem; color:#374151; margin-top:6px">{desc}</div>
         </div>
         """, unsafe_allow_html=True)
-
-st.markdown('<div class="section-title"> Rekomendasi Kebijakan</div>', unsafe_allow_html=True)
-
-rekomendasi = [
+        
+    st.markdown('<div class="section-title"> Rekomendasi Kebijakan</div>', unsafe_allow_html=True)
+    
+    rekomendasi = [
     (" Intervensi Berbasis Klaster Wilayah (Aglomerasi)",
      ["Bentuk Satgas Lintas Kabupaten/Kota untuk wilayah berbatasan yang memiliki agregasi stunting tinggi",
       "Sinkronkan kebijakan kesehatan, infrastruktur, dan edukasi gizi dengan kabupaten tetangga",
@@ -1024,12 +1024,11 @@ rekomendasi = [
       "Jadikan aplikasi pendataan keluarga (seperti Elsimil) sebagai syarat pendampingan pranikah dan pascasalin",
       "Pastikan jarak antar-kehamilan minimal 2–3 tahun untuk menjamin kecukupan nutrisi optimal ibu dan balita"],
      "#22c55e"),   
-]
-
+    ]
     for title, items, color in rekomendasi:
-    with st.expander(title, expanded=False):
-        for item in items:
-            st.markdown(f"• {item}")
+        with st.expander(title, expanded=False):
+            for item in items:
+                st.markdown(f"• {item}")
 
     # Saran penelitian lanjutan
     st.markdown('<div class="section-title"> Saran untuk Penelitian Lanjutan</div>', unsafe_allow_html=True)
