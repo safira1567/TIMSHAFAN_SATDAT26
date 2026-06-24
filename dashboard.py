@@ -1005,25 +1005,25 @@ rekomendasi = [
      ["Bentuk Satgas Lintas Kabupaten/Kota untuk wilayah berbatasan yang memiliki agregasi stunting tinggi",
       "Sinkronkan kebijakan kesehatan, infrastruktur, dan edukasi gizi dengan kabupaten tetangga",
       "Manfaatkan spillover effect (efek rambatan) positif melintasi batas administratif"],
-     "#8b5cf6"), # Warna Ungu
+     "#8b5cf6"),  "#ef4444"),
      
     (" Transformasi Metrik Sanitasi & Air Bersih",
      ["Lakukan audit kualitas air (uji E. coli dan logam berat) secara berkala, bukan sekadar data ketersediaan akses",
       "Awasi ketat pembangunan sanitasi agar sesuai standar SNI tangki septik",
       "Cegah kontaminasi air tanah yang dapat memicu diare kronis pada balita"],
-     "#3b82f6"), # Warna Biru
+     "#3b82f6"),  "#3b82f6"),
      
     (" Penguatan Regulasi Kawasan Tanpa Rokok (KTR)",
      ["Ubah narasi edukasi keluarga muda secara masif menjadi: 'Asap Rokok Menghambat Gizi Anak'",
       "Alokasikan Dana Desa untuk program insentif bagi keluarga bebas asap rokok",
       "Perketat implementasi Peraturan Daerah KTR hingga ke tingkat Rukun Warga (RW)"],
-     "#ef4444"), # Warna Merah
+     "#ef4444"),  "#22c55e"),
      
     (" Integrasi Data KB & Penanganan Stunting",
      ["Perkuat kolaborasi erat antara BKKBN dan Posyandu di tingkat masyarakat",
       "Jadikan aplikasi pendataan keluarga (seperti Elsimil) sebagai syarat pendampingan pranikah dan pascasalin",
       "Pastikan jarak antar-kehamilan minimal 2–3 tahun untuk menjamin kecukupan nutrisi optimal ibu dan balita"],
-     "#22c55e"), # Warna Hijau
+     "#22c55e"),    "#8b5cf6"),
 ]
 
     for title, items, color in rekomendasi:
